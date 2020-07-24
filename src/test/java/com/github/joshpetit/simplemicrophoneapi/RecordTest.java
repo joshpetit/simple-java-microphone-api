@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.Clip;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -32,7 +33,7 @@ class RecordTest {
      void record(){
         record.startRecord();
         try {
-            Thread.sleep(500);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -56,8 +57,21 @@ class RecordTest {
 
    @DisplayName("Test Delete")
    @Test
-    void test() {
+    void testDelete() {
         record.deleteRecording();
         assertFalse(record.getAudioFile().exists());
     }
+
+    @DisplayName("Test Play and Pause")
+    @Test
+    void testPause() throws InterruptedException {
+        record.play();
+        Thread.sleep(100);
+        record.pause();
+        Thread.sleep(200);
+        Clip audioClip = record.getAudioClip();
+        long microsecondPosition = audioClip.getMicrosecondPosition();
+        assertTrue(microsecondPosition < audioClip.getMicrosecondLength() && microsecondPosition > 0);
+    }
+
 }
