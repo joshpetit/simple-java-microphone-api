@@ -16,5 +16,6 @@ public abstract class Microphone {
     public static class Formats {
         public static AudioFormat DEFAULT = new AudioFormat
                 (AudioFormat.Encoding.PCM_SIGNED, 44100, 16, 2, 4, 44100, false);
+
     }
 }

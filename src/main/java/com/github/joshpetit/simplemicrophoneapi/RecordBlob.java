@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public class RecordBlob extends Record{
     private TargetDataLine targetDataLine;
-    private AudioFileFormat.Type fileFormat;
+    private final AudioFileFormat.Type fileFormat;
     private File audioFile;
-    private AudioFormat format;
+    private final AudioFormat format;
     private Clip audioClip;
 
     RecordBlob(AudioFormat format, AudioFileFormat.Type fileFormat) {
@@ -22,8 +22,6 @@ public class RecordBlob extends Record{
     public void startRecord() {
         try {
             targetDataLine = AudioSystem.getTargetDataLine(format);
-            targetDataLine.open();
-            targetDataLine.start();
             targetDataLine.open();
             targetDataLine.start();
             AudioInputStream ais = new AudioInputStream(targetDataLine);
@@ -67,7 +65,9 @@ public class RecordBlob extends Record{
 
     @Override
     public void deleteRecording() {
-
+        if (!audioFile.delete()) {
+           System.err.println("Error Deleting Audio File: " + audioFile.getAbsolutePath());
+        }
     }
 
     @Override
@@ -94,20 +94,22 @@ public class RecordBlob extends Record{
 
     @Override
     public Clip getAudioClip() {
-        return null;
+        return this.audioClip;
     }
 
     @Override
     public void play() {
-        if (audioClip == null || audioFile == null) {
+        if (audioClip != null && audioFile != null) {
+            audioClip.start();
+        } else {
             System.err.println("Error: Must record first");
-            return;
         }
-        audioClip.start();
     }
 
     @Override
     public void pause() {
-
+        if (audioClip != null && audioClip.isActive()) {
+          audioClip.stop();
+        }
     }
 }

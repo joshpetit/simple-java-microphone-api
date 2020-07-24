@@ -26,10 +26,9 @@ class RecordTest {
     void init() {
 //        record = microphone.createRecordingBlob(Microphone.Formats.DEFAULT);
         record = new RecordBlob(Microphone.Formats.DEFAULT, AudioFileFormat.Type.WAVE);
+        record();
     }
 
-    @DisplayName("Test Record")
-    @Test
      void record(){
         record.startRecord();
         try {
@@ -43,7 +42,6 @@ class RecordTest {
     @DisplayName("Test Save")
     @Test
     void testSave() {
-        record();
         File file = new File("test.wav");
         file.deleteOnExit();
         record.saveFile(Paths.get(file.getPath()));
@@ -53,7 +51,13 @@ class RecordTest {
     @DisplayName("Test Record")
     @Test
     void testRecord() {
-        record();
         assertNotEquals(0, record.getAudioFile().getTotalSpace());
+    }
+
+   @DisplayName("Test Delete")
+   @Test
+    void test() {
+        record.deleteRecording();
+        assertFalse(record.getAudioFile().exists());
     }
 }
