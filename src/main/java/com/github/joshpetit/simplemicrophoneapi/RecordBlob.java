@@ -3,7 +3,7 @@ package com.github.joshpetit.simplemicrophoneapi;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.UUID;
 
 public class RecordBlob extends Record{
@@ -77,7 +77,19 @@ public class RecordBlob extends Record{
 
     @Override
     public void saveFile(Path path) {
+        try {
+            Files.copy(Paths.get(audioFile.getPath()), path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void saveFile(String path) {
+        try {
+            Files.copy(Paths.get(audioFile.getPath()), Paths.get(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.sound.sampled.AudioFileFormat;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RecordTest {
@@ -26,11 +30,30 @@ class RecordTest {
 
     @DisplayName("Test Record")
     @Test
-     void testRecord() throws InterruptedException {
+     void record(){
         record.startRecord();
-        Thread.sleep(500);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         record.stopRecord();
-        assertNotEquals(0, record.getAudioFile().getTotalSpace());
     }
 
+    @DisplayName("Test Save")
+    @Test
+    void testSave() {
+        record();
+        File file = new File("test.wav");
+        file.deleteOnExit();
+        record.saveFile(Paths.get(file.getPath()));
+        Files.exists(Paths.get(file.getPath()));
+    }
+
+    @DisplayName("Test Record")
+    @Test
+    void testRecord() {
+        record();
+        assertNotEquals(0, record.getAudioFile().getTotalSpace());
+    }
 }
