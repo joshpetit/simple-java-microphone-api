@@ -100,6 +100,18 @@ public class RecordBlob extends Record{
     @Override
     public void play() {
         if (audioClip != null && audioFile != null) {
+            if (audioClip.getMicrosecondPosition() >= audioClip.getMicrosecondLength()) {
+                audioClip.setMicrosecondPosition(0);
+            }
+            audioClip.start();
+        } else {
+            System.err.println("Error: Must record first");
+        }
+    }
+
+    public void replay() {
+        if (audioClip != null && audioFile != null) {
+            audioClip.setMicrosecondPosition(0);
             audioClip.start();
         } else {
             System.err.println("Error: Must record first");

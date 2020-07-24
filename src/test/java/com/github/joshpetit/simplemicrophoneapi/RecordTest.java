@@ -33,7 +33,7 @@ class RecordTest {
      void record(){
         record.startRecord();
         try {
-            Thread.sleep(300);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
