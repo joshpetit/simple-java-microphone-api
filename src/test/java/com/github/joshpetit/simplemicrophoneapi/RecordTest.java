@@ -5,20 +5,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.AudioFileFormat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RecordTest {
     Record record;
-    Microphone microphone;
+    static Microphone microphone;
 
     @BeforeAll
-    public void create() {
+    public static void create() {
         microphone = new SimpleMicrophone();
     }
 
     @BeforeEach
     void init() {
-        record = microphone.createRecordingBlob(Microphone.Formats.DEFAULT);
+//        record = microphone.createRecordingBlob(Microphone.Formats.DEFAULT);
+        record = new RecordBlob(Microphone.Formats.DEFAULT, AudioFileFormat.Type.WAVE);
     }
 
     @DisplayName("Test Record")
