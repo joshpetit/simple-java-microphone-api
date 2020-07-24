@@ -1,10 +1,16 @@
 package com.github.joshpetit.simplemicrophoneapi;
 
+import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.Clip;
 import java.io.File;
 import java.nio.file.Path;
 
 public class RecordBlob extends Record{
+    RecordBlob(AudioFormat format) {
+
+
+    }
+
     @Override
     public void startRecord() {
 

@@ -18,7 +18,7 @@ class RecordTest {
 
     @BeforeEach
     void init() {
-        record = microphone.createRecordingBlob();
+        record = microphone.createRecordingBlob(Microphone.Formats.DEFAULT);
     }
 
     @DisplayName("Test Record")
