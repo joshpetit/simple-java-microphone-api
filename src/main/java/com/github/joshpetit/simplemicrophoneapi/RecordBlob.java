@@ -118,6 +118,15 @@ public class RecordBlob extends Record{
         }
     }
 
+    public void loop() {
+        if (audioClip != null && audioFile != null) {
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+            audioClip.start();
+        } else {
+            System.err.println("Error: Must record first");
+        }
+    }
+
     @Override
     public void pause() {
         if (audioClip != null && audioClip.isActive()) {

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -72,6 +73,14 @@ class RecordTest {
         Clip audioClip = record.getAudioClip();
         long microsecondPosition = audioClip.getMicrosecondPosition();
         assertTrue(microsecondPosition < audioClip.getMicrosecondLength() && microsecondPosition > 0);
+    }
+
+    @DisplayName("Test Loop")
+    @Test
+    void testLoop() throws InterruptedException {
+       record.loop();
+       Thread.sleep(650);
+       assertTrue(record.getAudioClip().isActive());
     }
 
 }

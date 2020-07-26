@@ -17,4 +17,5 @@ public abstract class Record {
     public abstract Clip getAudioClip();
     public abstract void play();
     public abstract void pause();
+    public abstract void loop();
 }
