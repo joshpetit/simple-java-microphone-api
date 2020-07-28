@@ -31,3 +31,12 @@ File file = new File("test.wav");
 record.saveFile(file.getPath()); //Path or String argument
 ```
 
+### Useful methods
+```
+getAudioFile();
+replay();
+getAudioClip();
+loop();
+pause();
+deleteRecording();
+```
