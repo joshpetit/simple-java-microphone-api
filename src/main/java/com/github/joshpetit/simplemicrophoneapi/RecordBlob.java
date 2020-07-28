@@ -13,10 +13,30 @@ public class RecordBlob extends Record{
     private final AudioFormat format;
     private Clip audioClip;
 
-    RecordBlob(AudioFormat format, AudioFileFormat.Type fileFormat) {
+    /**
+     *
+     * @param format Formats available in Record.Format.FORMAT
+     * @param fileFormat File formats available in AudioFileFormat.Type.FORMAT
+     */
+    public RecordBlob(AudioFormat format, AudioFileFormat.Type fileFormat) {
         this.format = format;
         this.fileFormat = fileFormat;
     }
+
+    /**
+     *
+     * @param format Formats available in Record.Format.FORMAT
+     */
+    public RecordBlob(AudioFormat format) {
+        this.format = format;
+        this.fileFormat = AudioFileFormat.Type.WAVE;
+    }
+
+    public RecordBlob() {
+        this.format = Formats.DEFAULT;
+        this.fileFormat = AudioFileFormat.Type.WAVE;
+    }
+
 
     @Override
     public void startRecord() {
