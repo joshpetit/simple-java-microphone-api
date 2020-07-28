@@ -121,6 +121,7 @@ public class RecordBlob extends Record{
         }
     }
 
+    @Override
     public void replay() {
         if (audioClip != null && audioFile != null) {
             audioClip.setMicrosecondPosition(0);
@@ -130,6 +131,7 @@ public class RecordBlob extends Record{
         }
     }
 
+    @Override
     public void loop() {
         if (audioClip != null && audioFile != null) {
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);

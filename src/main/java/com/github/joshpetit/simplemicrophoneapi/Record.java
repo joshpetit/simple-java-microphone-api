@@ -22,6 +22,7 @@ public abstract class Record {
     public abstract void play();
     public abstract void pause();
     public abstract void loop();
+    public abstract void replay();
 
     public static class Formats {
         public static AudioFormat DEFAULT = new AudioFormat
