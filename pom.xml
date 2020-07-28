@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <groupId>com.github.joshpetit</groupId>
-    <artifactId>simple-java-microphone-api</artifactId>
+    <artifactId>simplejavamicrophoneapi</artifactId>
     <version>1.0</version>
     <name>simple-java-microphone-api</name>
 
