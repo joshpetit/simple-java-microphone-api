@@ -33,7 +33,7 @@ public class RecordBlob extends Record{
     }
 
     public RecordBlob() {
-        this.format = Formats.DEFAULT;
+        this.format = Record.Formats.DEFAULT;
         this.fileFormat = AudioFileFormat.Type.WAVE;
     }
 

@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RecordTest {
     Record record;
-    static Microphone microphone;
 
 
     @BeforeEach
