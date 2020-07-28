@@ -37,7 +37,7 @@ class RecordTest {
     void testSave() {
         File file = new File("test.wav");
         file.deleteOnExit();
-        record.saveFile(Paths.get(file.getPath()));
+        record.saveFile(file.getPath());
         Files.exists(Paths.get(file.getPath()));
     }
 

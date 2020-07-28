@@ -104,14 +104,6 @@ public class RecordBlob extends Record{
         }
     }
 
-    public void saveFile(String path) {
-        try {
-            Files.copy(Paths.get(audioFile.getPath()), Paths.get(path));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public Clip getAudioClip() {
         return this.audioClip;
