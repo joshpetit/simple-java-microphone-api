@@ -1,3 +1,5 @@
 target/
 .idea/
 simple-java-microphone-api.iml
+src/main/java/com/github/joshpetit/simplemicrophoneapi/SimpleMicrophone.java
+src/main/java/com/github/joshpetit/simplemicrophoneapi/Microphone.java
