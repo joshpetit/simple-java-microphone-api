@@ -6,7 +6,7 @@ exacerbated and I stop updating it.
 ## Usage
 ### Initialize
 
-` record = new RecordBlob(Record.Formats.DEFAULT, AudioFileFormat.Type.WAVE);`
+`RecordBlob record = new RecordBlob(Record.Formats.DEFAULT, AudioFileFormat.Type.WAVE);`
 
 ### Record
 ```
